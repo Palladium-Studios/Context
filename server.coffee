@@ -3,6 +3,8 @@
 express = require 'express'
 stylus = require 'stylus'
 nib = require 'nib'
+coffeescript = require 'coffee-script'
+connectCoffeescript = require 'connect-coffee-script'
 
 settings = {
 	port : 3000
@@ -19,11 +21,10 @@ app = express()
 app.set 'views', "#{__dirname}/public/views"
 app.set 'view engine', 'jade'
 app.use express.logger 'dev'
-app.use stylus.middleware {
-	src : "#{__dirname}/public"
-	compile : (str, path) ->
-		return stylus(str).set('filename', path).use(nib()).import('nib')
-}
+app.use require('connect-assets')({
+	src : __dirname + "/assets"
+})
+
 app.use express.static "#{__dirname}/public"
 
 for route in settings.routes

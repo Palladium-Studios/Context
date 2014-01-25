@@ -1,10 +1,10 @@
 html
 	head
 		title #{title}
-		link(rel='stylesheet', href='/css/bootstrap.css')
-		link(rel='stylesheet', href='/css/styles.css')
+		!= css('bootstrap')
+		!= css('styles')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-	body.chat-container
+	body.chat-container(ng-app="Context")
 		.chat
 			
 			.chat-tabs
@@ -34,8 +34,7 @@ html
 				.message
 				.message
 				.message
-				.message
-
+				.message 
 
 			.message-entry
 				textarea
@@ -46,5 +45,6 @@ html
 
 		.inset-column
 
-	script(src='js/jquery.js')
-	script(src='/js/angular.js')
+	!= js('jquery')
+	!= js('angular')
+	!= js('main')
