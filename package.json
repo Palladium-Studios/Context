@@ -1,0 +1,20 @@
+{
+    "name": "context",
+    "description": "A context-aware chat application.",
+    "version": "0.0.1",
+    "private": true,
+    "author": "Mitchell Thompson",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/leonsbuddydave/context.git"
+    },
+    "dependencies": {
+        "coffee-script" : "",
+        "express": "~3.4.7",
+        "jade": "~1.0.2",
+        "stylus" : "*",
+        "nib" : "*",
+        "mongoose": "~3.8.3",
+        "connect-mongo": "~0.4.0"
+    }
+}
