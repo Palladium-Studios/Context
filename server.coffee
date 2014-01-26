@@ -13,7 +13,12 @@ settings = {
 			title : "Context"
 			route : "/"
 			view : "index"
-		}		
+		}
+		{
+			title : "Login or Sign Up"
+			route : "/login"
+			view : "login"
+		}
 	]
 }
 
@@ -28,8 +33,10 @@ app.use require('connect-assets')({
 app.use express.static "#{__dirname}/public"
 
 for route in settings.routes
-	app.get route.route, (req, res) ->
-		res.render route.view, route
+	((r) ->
+		app.get r.route, (req, res) ->
+			res.render r.view, r
+	)(route)
 
 app.listen settings.port
 

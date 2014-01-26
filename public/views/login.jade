@@ -1,0 +1,12 @@
+extend layout
+block content
+	.login-wrapper(ng-controller="LoginController")
+		.login-block
+			.login-header
+				h1 Log In / Sign Up
+
+			form.login-form
+				input(type='text')
+				input(type='password')
+				input(type='password', ng-show='model.newUser')
+

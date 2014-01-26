@@ -1,50 +1,17 @@
 html
 	head
 		title #{title}
-		!= css('bootstrap')
+		//- != css('bootstrap')
 		!= css('styles')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-	body.chat-container(ng-app="Context")
-		.chat
-			
-			.chat-tabs
-
-			.chat-view
-				//- Debug
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message
-				.message 
-
-			.message-entry
-				textarea
-
-			.message-toolbar
-				button.send-button Send
-
-
-		.inset-column
+	body.app-container
+		block content
 
 	!= js('jquery')
 	!= js('angular')
-	!= js('main')
+
+	script.
+		//- Bootstrap application
+		angular.module('Context', []);
+
+	!= js('app')

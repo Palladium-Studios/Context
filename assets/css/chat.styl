@@ -1,0 +1,52 @@
+
+.card-container
+	box-shadow inset 0px 0px 10px rgba(0,0,0,0.5)
+	background-color #efefef
+	flex 1 0 0
+
+.chat
+	display flex
+	flex-flow column
+	flex 1 0 0
+	padding 10px
+
+	.chat-tabs
+		flex 0 0 50px
+
+	.chat-view
+		overflow-y scroll
+		flex 1 0 0
+		display flex
+		flex-flow column-reverse
+
+		.message
+			flex 0 0 50px
+			background-color #f00
+			margin-top 10px
+
+	.message-entry
+		display flex
+		flex-flow row
+		flex 0 0 100px
+		margin-top 10px
+
+		textarea
+			flex 1 0 0
+
+	.message-toolbar
+		display flex
+		flex 0 0 30px
+		flex-flow row-reverse
+		margin-top 10px
+
+		.send-button
+			// diplay flex
+			flex 0 0 75px				
+
+// Mobile
+@media (max-width: 600px)
+	.chat-container
+		flex-flow column-reverse
+
+		.chat
+			flex 2 0 0
