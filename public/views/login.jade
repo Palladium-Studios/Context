@@ -6,7 +6,8 @@ block content
 				h1 Log In / Sign Up
 
 			form.login-form
-				input(type='text')
-				input(type='password')
-				input(type='password', ng-show='model.newUser')
+				input(type='text', placeholder="Username")
+				input(type='password', placeholder="Password")
+				input(type='password', ng-show='model.newUser', placeholder="Password Again")
+				button Go
 

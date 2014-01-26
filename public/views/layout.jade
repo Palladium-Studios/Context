@@ -1,17 +1,16 @@
-html
+html(ng-app="Context")
 	head
 		title #{title}
-		//- != css('bootstrap')
 		!= css('styles')
+		!= js('lib/jquery')
+		!= js('lib/angular')
+
+		script.
+			angular.module('Context', []);
+
+		!= js('app')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
 	body.app-container
 		block content
 
-	!= js('jquery')
-	!= js('angular')
-
-	script.
-		//- Bootstrap application
-		angular.module('Context', []);
-
-	!= js('app')
+	

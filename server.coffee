@@ -28,6 +28,7 @@ app.set 'view engine', 'jade'
 app.use express.logger 'dev'
 app.use require('connect-assets')({
 	src : __dirname + "/assets"
+	# build : true
 })
 
 app.use express.static "#{__dirname}/public"
