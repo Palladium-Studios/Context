@@ -1,9 +1,12 @@
 html(ng-app="Context")
 	head
 		title #{title}
+		!= css('bootstrap')
 		!= css('styles')
 		!= js('lib/jquery')
 		!= js('lib/angular')
+		!= js('ui-bootstrap')
+		link(href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css",rel="stylesheet")
 
 		script.
 			angular.module('Context', []);

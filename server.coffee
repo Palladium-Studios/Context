@@ -1,8 +1,6 @@
 #!/usr/bin/env coffee
 
 express = require 'express'
-stylus = require 'stylus'
-nib = require 'nib'
 coffeescript = require 'coffee-script'
 connectCoffeescript = require 'connect-coffee-script'
 
@@ -26,10 +24,15 @@ app = express()
 app.set 'views', "#{__dirname}/public/views"
 app.set 'view engine', 'jade'
 app.use express.logger 'dev'
+app.use express.bodyParser()
 app.use require('connect-assets')({
 	src : __dirname + "/assets"
 	# build : true
 })
+
+# Set up DB connection, set up the API endpoints
+require('mongoose').connect 'mongodb://localhost:42069/context'
+require('./api')(app)
 
 app.use express.static "#{__dirname}/public"
 
