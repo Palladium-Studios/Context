@@ -24,7 +24,7 @@ UserSchema.statics.auth = (username, password, callback) ->
 
 UserSchema.statics.exists = (username, callback) ->
 	this.find { username : username }, (err, users) ->
-		callback users.length > 0
+		callback(users.length > 0)
 
 UserSchema.statics.newRegistration = (username, password) ->
 	new User({

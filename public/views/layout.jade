@@ -1,19 +1,23 @@
 html(ng-app="Context")
 	head
 		title #{title}
-		!= css('bootstrap')
+		!= css('bootstrap.min')
+		!= css('bootstrap-theme.min')
 		!= css('styles')
+		!= css('theme-dark')
 		!= js('lib/jquery')
 		!= js('lib/angular')
-		!= js('ui-bootstrap')
+		!= js('lib/angular-route')
+		//- != js('ui-bootstrap')
 		link(href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css",rel="stylesheet")
-
+		
+		//- script(src="/socket.io/socket.io.js")
 		script.
-			angular.module('Context', []);
+			angular.module('Context', ['ngRoute']);
 
 		!= js('app')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-	body.app-container
+	body.app-container.container-fluid(ng-controller="ContextController")
 		block content
 
 	

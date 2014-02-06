@@ -3,7 +3,6 @@ block content
 	.login-wrapper(ng-controller="LoginController")
 		.login-block
 			.login-header
-				//- h1 Log In / Sign Up
 
 			form.login-form
 				.controls
@@ -14,7 +13,5 @@ block content
 					.form-group(ng-class="{'has-success' : passwordConfirmValid(), 'has-error' : !passwordConfirmValid()}")
 						input.form-control.input-lg(type='password', ng-show='model.newUser', ng-model="model.passwordConfirm", placeholder="New here? Password again, please.")
 					.form-group
-						button.btn.btn-lg.btn-primary.center-block(ng-click="login()")
-							| Go 
+						button.btn.btn-lg.btn-primary.center-block(ng-click="login()") Go
 							i.fa.fa-cog.fa-spin(ng-show="model.loggingIn")
-

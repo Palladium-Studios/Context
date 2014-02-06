@@ -1,6 +1,15 @@
 extend layout
 block content
-	.chat(ng-controller="ChatController")
+	.col-md-2.sidebar(ng-controller="SidebarController")
+
+		ul.nav.primary-nav
+			li.global-search: input.form-control(type='text')
+
+			li: a(href="#", ng-click="createNewRoom()") New Room
+		ul.nav.secondary-nav
+			li: a(href="#") Example Room
+
+	.chat.col-md-5.col-md-offset-2(ng-controller="ChatController")
 		
 		.chat-tabs
 
@@ -34,7 +43,18 @@ block content
 			textarea
 
 		.message-toolbar
-			button.send-button Send
+			button.send-button.btn.btn-primary Send Message
 
 
-	.card-container
+	.card-tower.col-md-5
+		.card
+		.card
+		.card
+		.card
+		.card
+		.card
+		.card
+		.card
+		.card
+		.card
+		.card

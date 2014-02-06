@@ -9,8 +9,8 @@
         "url": "https://github.com/leonsbuddydave/context.git"
     },
     "dependencies": {
-        "coffee-script" : "latest",
-        "connect-assets" : "latest",
+        "coffee-script" : "1.6.1",
+        "connect-assets" : "2.5.2",
         "express": "~3.4.7",
         "jade": "<1.0.0",
         "stylus" : "latest",
@@ -18,6 +18,8 @@
         "mongoose": "~3.8.3",
         "connect-mongo": "~0.4.0",
         "passport" : "latest",
-        "passport-local" : "latest"
+        "passport-local" : "latest",
+        "passport.socketio" : "latest",
+        "socket.io" : "latest"
     }
 } 

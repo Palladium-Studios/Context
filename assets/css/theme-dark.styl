@@ -1,0 +1,41 @@
+base-one = #404040
+
+body
+	background-color base-one
+
+::-webkit-scrollbar
+	width 12px
+	height 12px
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment
+	display block
+	height 0
+	background-color transparent
+
+::-webkit-scrollbar-track-piece
+	background-color #FAFAFA
+	-webkit-border-radius 0
+
+::-webkit-scrollbar-thumb:vertical
+	height 50px
+	background-color #999
+
+::-webkit-scrollbar-thumb:horizontal
+	width 50px
+	background-color #999
+
+
+.sidebar
+	background-color darken(base-one, 40%)
+
+.chat
+	.chat-view
+		.message
+			background-color #c0392b
+
+.card-tower
+	background-color darken(base-one, 40%)
+
+	.card
+		background-color lighten(base-one, 40%)

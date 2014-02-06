@@ -1283,6 +1283,7 @@ function angularInit(element, bootstrap) {
  * @returns {AUTO.$injector} Returns the newly created injector for this app.
  */
 function bootstrap(element, modules) {
+
   var doBootstrap = function() {
     element = jqLite(element);
 

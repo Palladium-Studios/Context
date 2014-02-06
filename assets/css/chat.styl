@@ -1,52 +1,69 @@
 
-.card-container
+@import 'nib'
+
+tabsHeight = 50px
+messageEntryHeight = 100px
+
+chatPadding = 20px
+cardGap = 20px
+
+chat-block-padding()
+	padding-top 5px
+	padding-bottom 5px
+	padding-right 25px
+
+.sidebar
+	position fixed
+	padding 0
+	height 100%
+	font-size 14pt
+
+	.global-search
+		padding 15px
+
+.card-tower
+	padding 20px
 	box-shadow inset 0px 0px 10px rgba(0,0,0,0.5)
 	background-color #efefef
-	flex 1 0 0
+	height 100%
+	overflow-y scroll
+
+	.card
+		width 100%
+		min-height 200px
+		margin-bottom cardGap
 
 .chat
-	display flex
-	flex-flow column
-	flex 1 0 0
-	padding 10px
+	height 100%
 
 	.chat-tabs
-		flex 0 0 50px
+		height tabsHeight
 
 	.chat-view
 		overflow-y scroll
-		flex 1 0 0
-		display flex
-		flex-flow column-reverse
+		chat-block-padding()
+		padding-right 15px
+		height calc(100% - 200px)
 
 		.message
-			flex 0 0 50px
-			background-color #f00
-			margin-top 10px
+			height 50px
+			margin-bottom chatPadding
 
 	.message-entry
-		display flex
-		flex-flow row
-		flex 0 0 100px
-		margin-top 10px
+		chat-block-padding()
+		height messageEntryHeight
 
 		textarea
-			flex 1 0 0
+			width 100%
+			height 100%
 
 	.message-toolbar
-		display flex
-		flex 0 0 50px
-		flex-flow row-reverse
-		margin-top 10px
+		chat-block-padding()
+		height 50px
 
 		.send-button
-			// diplay flex
-			flex 0 0 75px				
+			float right
+			height 100%
 
 // Mobile
-@media (max-width: 600px)
-	.chat-container
-		flex-flow column-reverse
-
-		.chat
-			flex 2 0 0
+// @media (max-width: 600px)
