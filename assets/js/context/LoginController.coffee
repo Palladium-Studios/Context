@@ -1,4 +1,4 @@
-angular.module('Context').controller 'LoginController', ['$scope', 'User', ($scope, User) ->
+angular.module('Context').controller 'LoginController', ['$scope', 'User', '$window', ($scope, User, $window) ->
 
 	$scope.model = {
 		newUser : null
@@ -34,11 +34,14 @@ angular.module('Context').controller 'LoginController', ['$scope', 'User', ($sco
 		passwordConfirm = $scope.model.passwordConfirm
 
 		if $scope.model.newUser
-			# Register a new user
-			User.registerNew(username, password, passwordConfirm).then (response) ->
-				console.log 'Response: '
-				console.log response.data
+			User.registerNew username, password, passwordConfirm, (response) ->
+				User.auth(username, password).then (response) ->
+					$window.location.href = '/'
 		else
 			User.auth(username, password).then (response) ->
-				console.log 'Got it!'
+				if response.data.login is "success"
+					console.log 'Success.'
+					$window.location.href = '/'
+				else
+					console.log 'Failed to log in.'
 ]

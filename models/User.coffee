@@ -11,6 +11,10 @@ UserSchema = new Schema({
 		ip : String
 		lastKnownDate : Date
 	}]
+	currentRooms : [{
+		type: Schema.ObjectId
+		ref: 'Room'
+	}]
 })
 
 hashPassword = (rawPassword) ->
@@ -26,12 +30,16 @@ UserSchema.statics.exists = (username, callback) ->
 	this.find { username : username }, (err, users) ->
 		callback(users.length > 0)
 
-UserSchema.statics.newRegistration = (username, password) ->
+UserSchema.statics.newRegistration = (username, password, passwordConfirm) ->
+	return false if password isnt passwordConfirm
+
 	new User({
 		username : username
 		usernameLowercase : username.toLowerCase()
 		password : hashPassword(password)
 	}).save()
+
+	return true
 
 User = mongoose.model 'User', UserSchema
 

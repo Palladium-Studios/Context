@@ -1,5 +1,5 @@
 {
-    "name": "context",
+    "name": "Context",
     "description": "A context-aware chat application.",
     "version": "0.0.1",
     "private": true,
@@ -16,7 +16,7 @@
         "stylus" : "latest",
         "nib" : "latest",
         "mongoose": "~3.8.3",
-        "connect-mongo": "~0.4.0",
+        "connect-mongo-store" : "latest",
         "passport" : "latest",
         "passport-local" : "latest",
         "passport.socketio" : "latest",

@@ -1,21 +1,18 @@
-angular.module('Context').service 'User', ['$http', '$q', ($http, $q) ->
+angular.module('Context').service 'User', ['$http', '$q', 'socket', ($http, $q, socket) ->
 
 	return {
 		exists : (username) ->
-			url = "/api/users/exists/#{username}"
-			return $http.get(url)
+			return $http.get "/api/users/exists/#{username}"
 
 		registerNew : (username, password, passwordConfirm) ->
-			url = "/api/users/register"
-			return $http.post url, {
+			return $http.post '/api/users/register', {
 				username : username
 				password : password
 				passwordConfirm : passwordConfirm
 			}
 
 		auth : (username, password) ->
-			url = "/api/users/login"
-			return $http.post url, {
+			return $http.post "/api/users/login", {
 				username : username
 				password : password
 			}

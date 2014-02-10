@@ -2,3 +2,5 @@
 #= require_tree ./context
 
 angular.module('Context').config ($routeProvider, $locationProvider) ->
+
+	$locationProvider.html5Mode(true)

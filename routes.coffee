@@ -47,7 +47,6 @@ module.exports = (app) ->
 
 	app.get '/api/users/exists/:username', (req, res) ->
 		result = models.User.exists req.params.username, (exists) ->
-			
 			response = {
 				username : req.params.username
 				exists : exists
