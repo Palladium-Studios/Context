@@ -41,6 +41,7 @@ UserSchema.statics.newRegistration = (username, password, passwordConfirm) ->
 
 	return true
 
+
 User = mongoose.model 'User', UserSchema
 
 module.exports = User

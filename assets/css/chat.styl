@@ -1,7 +1,6 @@
 
 @import 'nib'
 
-tabsHeight = 50px
 messageEntryHeight = 100px
 
 chatPadding = 20px
@@ -16,10 +15,13 @@ chat-block-padding()
 	position fixed
 	padding 0
 	height 100%
-	font-size 14pt
 
 	.global-search
 		padding 15px
+
+	.sidebar-header
+		padding-left 15px
+		
 
 .card-tower
 	padding 20px
@@ -43,7 +45,7 @@ chat-block-padding()
 		overflow-y scroll
 		chat-block-padding()
 		padding-right 15px
-		height calc(100% - 200px)
+		height calc(100% - 150px)
 
 		.message
 			height 50px

@@ -3,7 +3,6 @@ passport = require 'passport'
 LocalStrategy = require('passport-local').Strategy;
 
 initializePassport = (app) ->
-	# Set up all the passport shit
 	app.use passport.initialize()
 	app.use passport.session()
 

@@ -3,14 +3,10 @@
 ###
 
 SocketEvents = {
-	UserExistsRequest : "UserExistsRequest"
-	UserExistsResponse : "UserExistsResponse"
+	RoomJoinRequest : "RoomJoinRequest"
+	RoomJoinResponse : "RoomJoinResponse"
 
-	UserRegistrationRequest : "UserRegistrationRequest"
-	UserRegistrationResponse : "UserRegistrationResponse"
-
-	UserLoginRequest : "UserLoginRequest"
-	UserLoginResponse : "UserLoginResponse"
+	NewUserInRoom : "NewUserInRoom"
 }
 
 # Make sure it's consistently available

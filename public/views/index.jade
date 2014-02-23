@@ -2,17 +2,22 @@ extend layout
 block content
 	.col-md-2.sidebar(ng-controller="SidebarController")
 
-		ul.nav.primary-nav
-			li.global-search: input.form-control(type='text')
+		//- ul.nav
+		//- 	li.global-search: input.form-control(type='text')
 
-			li: a(href="#", ng-click="createNewRoom()") New Room
-		ul.nav.secondary-nav
-			li: a(href="#") Example Room
+		h4.sidebar-header My Rooms
+		ul.list-group.room-list
+			li.list-group-item(ng-repeat="(id, room) in model.rooms")
+				a(href="#") {{room.name}}
+
+		ul.list-group.join-room-list
+			li.list-group-item
+				.input-group
+					input.form-control(type="text", ng-model="model.roomJoinName")
+					span.input-group-btn
+						button.btn.btn-default(ng-click="joinRoom()") +
 
 	.chat.col-md-5.col-md-offset-2(ng-controller="ChatController")
-		
-		.chat-tabs
-
 		.chat-view
 			.message
 			.message
