@@ -1,17 +1,15 @@
 angular.module('Context').controller 'ContextController', ['$scope', 'socket', ($scope, socket) ->
 	
 	$scope.model = {
-		rooms : {}
-		activeRoom : ""
+		user : null
 	}
 
 	###
-		Listen for a RoomJoinResponse
+		Listen for the initial burst of 
+		useful data
 	###
-	socket.on SocketEvents.RoomJoinResponse, (room) ->
-
-		# Add this room
-		$scope.model.rooms[room.name] = room
-		$scope.model.activeRoom = room.name
+	socket.on SocketEvents.UserUpdate, (updateInfo) ->
+		$scope.model.user = updateInfo
+		console.log updateInfo
 
 ]

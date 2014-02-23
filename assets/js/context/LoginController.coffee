@@ -25,7 +25,10 @@ angular.module('Context').controller 'LoginController', ['$scope', 'User', '$win
 		valid &= $scope.model.password is $scope.model.passwordConfirm
 		return valid
 
-	$scope.login = ->
+	$scope.doLogin = ->
+		console.log 'Logging in!'
+		console.log $scope.login
+
 		return if $scope.model.newUser is null
 		$scope.model.loggingIn = true
 

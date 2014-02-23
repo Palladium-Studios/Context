@@ -11,14 +11,27 @@ UserSchema = new Schema({
 		ip : String
 		lastKnownDate : Date
 	}]
-	currentRooms : [{
+	rooms : [{
 		type: Schema.ObjectId
 		ref: 'Room'
 	}]
+	activeRoom : {
+		type: Schema.ObjectId
+		ref: 'Room'
+	}
 })
 
+# Password hash - this should probably be something better later
 hashPassword = (rawPassword) ->
 	return crypto.createHash('md5').update(rawPassword).digest('hex')
+
+# Set some hidden fields on the user schema
+UserSchema.set 'toJSON', {
+    transform: (doc, ret, options) ->
+        delete ret.password
+        delete ret.usernameLowercase
+        return ret
+    }
 
 UserSchema.statics.auth = (username, password, callback) ->
 	this.findOne {
@@ -41,6 +54,13 @@ UserSchema.statics.newRegistration = (username, password, passwordConfirm) ->
 
 	return true
 
+UserSchema.methods.addRoom = (room, callback) ->
+
+	# Add this room to the user 
+	if this.rooms.indexOf(room._id) is -1
+		this.rooms.push room._id
+
+	this.save(callback)
 
 User = mongoose.model 'User', UserSchema
 

@@ -3,6 +3,8 @@
 ###
 
 SocketEvents = {
+	UserUpdate : "UserUpdate"
+
 	RoomJoinRequest : "RoomJoinRequest"
 	RoomJoinResponse : "RoomJoinResponse"
 

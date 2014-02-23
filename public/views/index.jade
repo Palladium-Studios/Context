@@ -7,7 +7,7 @@ block content
 
 		h4.sidebar-header My Rooms
 		ul.list-group.room-list
-			li.list-group-item(ng-repeat="(id, room) in model.rooms")
+			li.list-group-item(ng-repeat="(id, room) in model.user.rooms")
 				a(href="#") {{room.name}}
 
 		ul.list-group.join-room-list
