@@ -12,20 +12,21 @@ module.exports = (io) ->
 			user = socket.handshake.user
 			models.User.findOne( { _id : user._id } )
 				.populate('rooms')
+				.populate('rooms.messages')
 				.populate('activeRoom')
 				.exec (err, user) ->
 					socket.emit SocketEvents.UserUpdate, user
 
-					callback() if callback?
+					callback(user) if callback?
 
-		# Call the update immediately on connection
-		userUpdate()
 
-		# TODO: Add the user to their active socket room
-		# immediately upon connection
+		userUpdate (user) ->
+			# Call the update immediately on connection
+			# and connect them to all their rooms
+			for room in user.rooms
+				socket.join room._id
 
 		###
-			Needs to:
 			- Join the room (it will be created if it does not exist)
 			- Create or Join the socket.io.room for this room
 			- Add the newly joined room to the User model
@@ -45,13 +46,35 @@ module.exports = (io) ->
 						# Join the room
 						socket.join room._id
 
-						# Send the user a response letting them know what's up
-						userUpdate()
-
 						# Let everyone else know the user is here
 						socket.broadcast.to(room._id).emit SocketEvents.NewUserInRoom
 
+						# Send the user a response letting them know what's up
+						userUpdate()
+
 		###
-	
+			- Change the user's active room to the one provided
+			- Save the User model
 		###
+		socket.on SocketEvents.ActiveRoomChange, (roomId) ->
+			models.User.findOne { _id : socket.handshake.user._id }, (err, user) ->
+				user.activeRoom = roomId
+				user.save()
+
+		###
+			- Creates a new Message
+			- Attaches the Message to the Room
+			- Broadcasts the message information to the room
+			- TODO: Parse the message for card information
+		###
+		socket.on SocketEvents.NewMessage, (data) ->
+			clientsInRoom = io.sockets.clients(data.roomId)
+
+			# Check if the socket is in the room they want to message
+			if clientsInRoom.indexOf(socket) isnt -1
+				console.log "User can send message to this room."
+
+			# Someone is playing games with me
+			else
+				console.log "User cannot send message to this room."
 

@@ -2,14 +2,19 @@
 	This file is going to be shared between client and server
 ###
 
-SocketEvents = {
-	UserUpdate : "UserUpdate"
+EventNames = [
+	"UserUpdate"
+	"ActiveRoomChange"
+	"RoomJoinRequest"
+	"RoomJoinResponse"
+	"NewUserInRoom"
+	"NewMessage"
+]
 
-	RoomJoinRequest : "RoomJoinRequest"
-	RoomJoinResponse : "RoomJoinResponse"
+SocketEvents = {}
 
-	NewUserInRoom : "NewUserInRoom"
-}
+for e in EventNames
+	SocketEvents[e] = e
 
 # Make sure it's consistently available
 [window?.SocketEvents, module?.exports] = [SocketEvents, SocketEvents]

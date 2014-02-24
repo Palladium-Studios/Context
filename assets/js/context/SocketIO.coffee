@@ -18,7 +18,6 @@ angular.module('Context').factory 'socket', [ '$rootScope', ($rootScope) ->
 			socket.emit eventName, data, () ->
 				args = arguments
 				$rootScope.$apply () ->
-					if callback?
-						callback.apply socket, args
+					callback?.apply socket, args
 	}
 ]

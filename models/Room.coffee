@@ -8,10 +8,20 @@ RoomSchema = new Schema({
 		type: Schema.ObjectId
 		ref: 'User'
 	}]
-	# cards : [{
-
-	# }]
+	messages : [{
+		type: Schema.ObjectId
+		ref: 'Message'
+	}]
 })
+
+# We don't want to return a potentially
+# enormous amount of messages
+# So we trim that
+RoomSchema.set 'toJSON', {
+    transform: (doc, ret, options) ->
+        ret.messages = ret.messages.slice(-100)
+        return ret
+    }
 
 ###
 	Adds a user to this room. Once a user has
@@ -39,6 +49,11 @@ RoomSchema.statics.addUser = (user, name, callback) ->
 			room.save()
 
 		callback room
+
+RoomSchema.methods.addMessage = (message) ->
+	this.messages.push message._id
+
+RoomSchema.methods.getMessages = (count = 10, page = 0, startId = null) ->
 
 
 Room = mongoose.model 'Room', RoomSchema

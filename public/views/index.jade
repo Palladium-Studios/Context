@@ -6,49 +6,32 @@ block content
 		//- 	li.global-search: input.form-control(type='text')
 
 		h4.sidebar-header My Rooms
-		ul.list-group.room-list
-			li.list-group-item(ng-repeat="(id, room) in model.user.rooms")
-				a(href="#") {{room.name}}
+		div.list-group.room-list
+			a.list-group-item(
+				href="#"
+				ng-class="{active : (room._id == model.user.activeRoom._id) }"
+				ng-click="changeActiveRoom(room._id)"
+				ng-repeat="(index, room) in model.user.rooms"
+			) {{room.name}}
 
 		ul.list-group.join-room-list
 			li.list-group-item
 				.input-group
-					input.form-control(type="text", ng-model="model.roomJoinName")
+					input.form-control(type="text", ng-model="roomJoinName")
 					span.input-group-btn
 						button.btn.btn-default(ng-click="joinRoom()") +
 
 	.chat.col-md-5.col-md-offset-2(ng-controller="ChatController")
 		.chat-view
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message
-			.message 
+			.message(
+				ng-repeat="message in model.user.activeRoom.messages"
+			)
 
 		.message-entry
-			textarea
+			textarea(ng-model="newMessage")
 
 		.message-toolbar
-			button.send-button.btn.btn-primary Send Message
+			button.send-button.btn.btn-primary(ng-click="sendMessage()") Send Message
 
 
 	.card-tower.col-md-5
